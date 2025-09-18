@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="background-gradient"></div>
+    <div class="container">
+      <header class="header">
+        <div class="location-info">
+          <h1 class="location-name" id="locationName">New York</h1>
+          <p class="current-time" id="currentTime">12:34 PM</p>
+        </div>
+        <div class="header-actions">
+          <button class="search-btn" id="searchBtn" aria-label="Search">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+          </button>
+          <button class="search-btn" id="themeToggle" aria-label="Toggle theme">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M12 3a9 9 0 0 0 0 18c4.97 0 9-4.03 9-9 0-1.07-.19-2.1-.54-3.05A7 7 0 0 1 12 3Z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+      <div class="search-modal" id="searchModal">
+        <div class="search-container">
+          <input
+            type="text"
+            class="search-input"
+            id="searchInput"
+            placeholder="Search for a city..."
+          />
+          <button class="search-close" id="searchClose">&times;</button>
+        </div>
+      </div>
+      <div class="current-weather glass-card">
+        <div class="weather-icon">
+          <img id="weatherIcon" src="" alt="Weather" />
+        </div>
+        <div class="temperature">
+          <span class="temp-value" id="currentTemp"></span>
+          <span class="temp-unit">°C</span>
+        </div>
+        <p class="weather-description" id="weatherDescription"></p>
+        <div class="temp-range">
+          <span id="highTemp"></span>
+          <span id="lowTemp"></span>
+        </div>
+      </div>
+
+      <div class="weather-details glass-card">
+        <div class="detail-item">
+          <div class="detail-icon">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"
+              ></path>
+            </svg>
+          </div>
+          <div class="detail-content">
+            <span class="detail-label">Humidity</span>
+            <span class="detail-value" id="humidity"></span>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <div class="detail-icon">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M14 9V5a3 3 0 0 0-6 0v4"></path>
+              <rect x="2" y="9" width="20" height="12" rx="2" ry="2"></rect>
+            </svg>
+          </div>
+          <div class="detail-content">
+            <span class="detail-label">Pressure</span>
+            <span class="detail-value" id="pressure"></span>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <div class="detail-icon">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"></path>
+              <path d="M9.6 4.6A2 2 0 1 1 11 8H2"></path>
+              <path d="M12.6 19.4A2 2 0 1 0 14 16H2"></path>
+            </svg>
+          </div>
+          <div class="detail-content">
+            <span class="detail-label">Wind</span>
+            <span class="detail-value" id="windSpeed"></span>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <div class="detail-icon">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </div>
+          <div class="detail-content">
+            <span class="detail-label">UV Index</span>
+            <span class="detail-value" id="uvIndex"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hourly-forecast glass-card">
+        <h3 class="section-title">Hourly Forecast</h3>
+        <div class="hourly-scroll" id="hourlyForecast"></div>
+      </div>
+
+      <div class="daily-forecast glass-card">
+        <h3 class="section-title">5-Day Forecast</h3>
+        <div class="daily-list" id="dailyForecast"></div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
